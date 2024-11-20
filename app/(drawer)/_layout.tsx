@@ -1,35 +1,54 @@
-import { Ionicons, MaterialIcons } from '@expo/vector-icons'
-import { Link } from 'expo-router'
-import { Drawer } from 'expo-router/drawer'
+import { Ionicons, MaterialIcons } from "@expo/vector-icons"
+import { Link } from "expo-router"
+import { Drawer } from "expo-router/drawer"
 
-import { HeaderButton } from '../../components/HeaderButton'
+import { HeaderButton } from "~/components/HeaderButton"
+import { HeaderNewChatButton } from "~/components/chat/HeaderNewChatButton";
 
-const DrawerLayout = () => (
-  <Drawer>
+const HomeScreenLayout = () => (
+  <Drawer
+  screenOptions = {{
+      headerTintColor: "red", // This changes the burger menu color
+      drawerActiveTintColor: "red", // Active item text/icon color
+  }}>
     <Drawer.Screen
       name="index"
       options={{
-        headerTitle: 'Home',
-        drawerLabel: 'Home',
-        drawerIcon: ({ size, color }) => <Ionicons name="home-outline" size={size} color={color} />,
+        headerTitle: "Home",
+        drawerLabel: "Home",
+        drawerIcon: ({ size, color }) => <Ionicons name="home-sharp" size={size} color={color} />,
+        headerRight: () => (
+          <HeaderNewChatButton />
+        ),
       }}
     />
     <Drawer.Screen
-      name="(tabs)"
+      name="(chat)"
       options={{
-        headerTitle: 'Tabs',
-        drawerLabel: 'Tabs',
+        title: 'Chat',
+        drawerLabel: 'Chat',
         drawerIcon: ({ size, color }) => (
-          <MaterialIcons name="border-bottom" size={size} color={color} />
+          <Ionicons name="chatbubbles-sharp" size={size} color={color} />
         ),
         headerRight: () => (
-          <Link href="/modal" asChild={true}>
-            <HeaderButton />
-          </Link>
+            <HeaderNewChatButton />
+        ),
+      }}
+    />
+    <Drawer.Screen
+      name="(bible)"
+      options={{
+        headerTitle: "Bible",
+        drawerLabel: "Bible",
+        drawerIcon: ({ size, color }) => (
+          <Ionicons name="book-sharp" size={size} color={color} />
+        ),
+        headerRight: () => (
+          <HeaderNewChatButton />
         ),
       }}
     />
   </Drawer>
 )
 
-export default DrawerLayout
+export default HomeScreenLayout

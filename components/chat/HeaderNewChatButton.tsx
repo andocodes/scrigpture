@@ -1,16 +1,21 @@
-import FontAwesome from "@expo/vector-icons/FontAwesome"
+import { Entypo } from "@expo/vector-icons"
 import { forwardRef } from "react"
 import { Pressable, StyleSheet } from "react-native"
+import { router } from "expo-router";
 
-export const HeaderButton = forwardRef<typeof Pressable, { onPress?: () => void }>(
+export const HeaderNewChatButton = forwardRef<typeof Pressable, { onPress?: () => void }>(
   ({ onPress }, ref) => {
     return (
-      <Pressable onPress={onPress}>
+      <Pressable
+        onPress={() => {
+          const newChatId = `chat-${Date.now()}`
+          router.push(`/chat/${newChatId}`)
+        }}>
         {({ pressed }) => (
-          <FontAwesome
-            name="info-circle"
-            size={25}
-            color="gray"
+          <Entypo
+            name="new-message"
+            size={18}
+            color="red"
             style={[
               styles.headerRight,
               {
