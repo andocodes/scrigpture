@@ -1,17 +1,17 @@
 import { Tabs } from "expo-router"
-import { TabBarIcon } from "~/components/TabBarIcon"
 import { useColorScheme } from "react-native"
+import { TabBarIcon } from "~/components/TabBarIcon"
 
 export default function ChatScreenLayout() {
-  useColorScheme();
+  useColorScheme()
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "red",
         tabBarStyle: {
-          backgroundColor: '#1a1a1a',
-          borderTopColor: '#333',
+          backgroundColor: "#1a1a1a",
+          borderTopColor: "#333",
         },
         tabBarInactiveTintColor: "#666",
       }}
@@ -33,7 +33,7 @@ export default function ChatScreenLayout() {
       <Tabs.Screen
         name="[id]"
         options={{
-          href: null
+          href: null,
         }}
       />
     </Tabs>

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
+import { ReactNode, createContext, useContext, useState } from "react"
 
 interface Message {
   id: string
@@ -25,7 +25,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
       value={{
         messages,
         setMessages,
-        clearMessages
+        clearMessages,
       }}
     >
       {children}
@@ -36,7 +36,7 @@ export function MessagesProvider({ children }: { children: ReactNode }) {
 export function useMessages() {
   const context = useContext(MessagesContext)
   if (context === undefined) {
-    throw new Error('useMessages must be used within a MessagesProvider')
+    throw new Error("useMessages must be used within a MessagesProvider")
   }
   return context
 }

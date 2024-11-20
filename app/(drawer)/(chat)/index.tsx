@@ -1,9 +1,9 @@
 import { useRef, useState } from "react"
-import { View, ScrollView, KeyboardAvoidingView, Platform } from "react-native"
+import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native"
 import { Container } from "~/components/Container"
-import { Message } from "~/components/chat/Message"
 import { ChatInput } from "~/components/chat/ChatInput"
 import { LoadingMessage } from "~/components/chat/LoadingMessage"
+import { Message } from "~/components/chat/Message"
 import { useMessages } from "~/hooks/useMessages"
 
 export default function ChatScreen() {
@@ -30,7 +30,7 @@ export default function ChatScreen() {
         isUser: false,
         timestamp: new Date().toISOString(),
       }
-      setMessages(prev => [...prev, aiResponse])
+      setMessages((prev) => [...prev, aiResponse])
       setIsLoading(false)
     }, 1000)
   }

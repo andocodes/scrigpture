@@ -1,8 +1,8 @@
-import { View, Text, Pressable, FlatList } from "react-native"
-import { Container } from "~/components/Container"
 import { useRouter } from "expo-router"
+import { FlatList, Pressable, Text, View } from "react-native"
+import { Container } from "~/components/Container"
+import { useMessages } from "~/hooks/useMessages"
 import mockChats from "~/mocks/chats.json"
-import { useMessages } from "~/hooks/useMessages";
 
 interface ChatMessage {
   id: string
@@ -30,7 +30,7 @@ export default function HistoryScreen() {
     // Load the selected chat's messages
     setMessages(chat.messages)
     // Navigate to chat screen
-    router.push('/(drawer)/(chat)/')
+    router.push("/(drawer)/(chat)/")
   }
 
   return (

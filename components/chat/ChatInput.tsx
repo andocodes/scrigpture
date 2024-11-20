@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { View, TextInput, Pressable } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
+import { useState } from "react"
+import { Pressable, TextInput, View } from "react-native"
 
 interface ChatInputProps {
   onSend: (message: string) => void

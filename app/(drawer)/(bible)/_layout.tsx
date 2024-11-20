@@ -8,8 +8,8 @@ export default function BibleScreenLayout() {
         headerShown: false,
         tabBarActiveTintColor: "red",
         tabBarStyle: {
-          backgroundColor: '#1a1a1a',
-          borderTopColor: '#333',
+          backgroundColor: "#1a1a1a",
+          borderTopColor: "#333",
         },
         tabBarInactiveTintColor: "#666",
       }}

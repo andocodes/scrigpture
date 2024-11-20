@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from "react"
-import { View, ScrollView, KeyboardAvoidingView, Platform } from "react-native"
 import { useLocalSearchParams } from "expo-router"
+import { useEffect, useRef, useState } from "react"
+import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native"
 import { Container } from "~/components/Container"
-import { Message } from "~/components/chat/Message"
 import { ChatInput } from "~/components/chat/ChatInput"
 import { LoadingMessage } from "~/components/chat/LoadingMessage"
+import { Message } from "~/components/chat/Message"
 import mockChats from "~/mocks/chats.json"
 
 export default function ChatScreen() {
   const { id } = useLocalSearchParams<{ id: string }>()
   const [messages, setMessages] = useState(
-    mockChats.chats.find(chat => chat.id === id)?.messages ?? []
+    mockChats.chats.find((chat) => chat.id === id)?.messages ?? []
   )
   const [isLoading, setIsLoading] = useState(false)
   const scrollViewRef = useRef<ScrollView>(null)
@@ -23,7 +23,7 @@ export default function ChatScreen() {
       timestamp: new Date().toISOString(),
     }
 
-    setMessages(prev => [...prev, newMessage])
+    setMessages((prev) => [...prev, newMessage])
     setIsLoading(true)
 
     // Simulate AI response
@@ -34,7 +34,7 @@ export default function ChatScreen() {
         isUser: false,
         timestamp: new Date().toISOString(),
       }
-      setMessages(prev => [...prev, aiResponse])
+      setMessages((prev) => [...prev, aiResponse])
       setIsLoading(false)
     }, 1000)
   }

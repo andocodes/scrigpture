@@ -1,8 +1,8 @@
 import { Entypo } from "@expo/vector-icons"
+import { useRouter } from "expo-router"
 import { forwardRef } from "react"
 import { Pressable, StyleSheet } from "react-native"
-import { useRouter } from "expo-router";
-import { useMessages } from "~/hooks/useMessages";
+import { useMessages } from "~/hooks/useMessages"
 
 export const HeaderNewChatButton = forwardRef<typeof Pressable, { onPress?: () => void }>(
   ({ onPress }, ref) => {
@@ -15,8 +15,9 @@ export const HeaderNewChatButton = forwardRef<typeof Pressable, { onPress?: () =
           // const newChatId = `chat-${Date.now()}`
           // router.push(`/(drawer)/(chat)/${newChatId}`)
           clearMessages() // Clear messages before navigating to new chat
-          router.push('/(drawer)/(chat)/')
-        }}>
+          router.push("/(drawer)/(chat)/")
+        }}
+      >
         {({ pressed }) => (
           <Entypo
             name="new-message"
