@@ -1,23 +1,23 @@
-import { View, Text } from "react-native"
 import { FlashList } from "@shopify/flash-list"
-import { Container } from "~/components/Container"
+import { Text, View } from "react-native"
 import { Button } from "~/components/Button"
+import { Container } from "~/components/Container"
 
 const FAVORITE_VERSES = [
   {
-    id: '1',
-    reference: 'John 3:16',
-    text: 'For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.',
+    id: "1",
+    reference: "John 3:16",
+    text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
   },
   {
-    id: '2',
-    reference: 'Philippians 4:13',
-    text: 'I can do all things through Christ who strengthens me.',
+    id: "2",
+    reference: "Philippians 4:13",
+    text: "I can do all things through Christ who strengthens me.",
   },
   {
-    id: '3',
-    reference: 'Psalm 23:1',
-    text: 'The Lord is my shepherd; I shall not want.',
+    id: "3",
+    reference: "Psalm 23:1",
+    text: "The Lord is my shepherd; I shall not want.",
   },
 ]
 
