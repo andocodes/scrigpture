@@ -8,8 +8,9 @@ export const HeaderNewChatButton = forwardRef<typeof Pressable, { onPress?: () =
     return (
       <Pressable
         onPress={() => {
-          const newChatId = `chat-${Date.now()}`
-          router.push(`/chat/${newChatId}`)
+          // const newChatId = `chat-${Date.now()}`
+          // router.push(`/(drawer)/(chat)/${newChatId}`)
+          router.push('/(drawer)/(chat)/')
         }}>
         {({ pressed }) => (
           <Entypo

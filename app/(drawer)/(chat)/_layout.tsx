@@ -33,7 +33,7 @@ export default function ChatScreenLayout() {
       <Tabs.Screen
         name="[id]"
         options={{
-          href: null,
+          href: null
         }}
       />
     </Tabs>

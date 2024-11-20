@@ -1,39 +1,37 @@
-import { useState, useRef } from "react"
+import { useRef, useState } from "react"
 import { View, ScrollView, KeyboardAvoidingView, Platform } from "react-native"
 import { Container } from "~/components/Container"
 import { Message } from "~/components/chat/Message"
 import { ChatInput } from "~/components/chat/ChatInput"
-
-interface ChatMessage {
-  id: string
-  content: string
-  isUser: boolean
-  timestamp: Date
-}
+import { LoadingMessage } from "~/components/chat/LoadingMessage"
+import { useMessages } from "~/hooks/useMessages"
 
 export default function ChatScreen() {
-  const [messages, setMessages] = useState<ChatMessage[]>([])
+  const { messages, setMessages } = useMessages()
+  const [isLoading, setIsLoading] = useState(false)
   const scrollViewRef = useRef<ScrollView>(null)
 
-  const handleSend = (content: string) => {
-    const newMessage: ChatMessage = {
+  const handleSend = async (content: string) => {
+    const newMessage = {
       id: Date.now().toString(),
       content,
       isUser: true,
-      timestamp: new Date(),
+      timestamp: new Date().toISOString(),
     }
 
-    setMessages((prev) => [...prev, newMessage])
+    setMessages([...messages, newMessage])
+    setIsLoading(true)
 
     // Simulate AI response
     setTimeout(() => {
-      const aiResponse: ChatMessage = {
+      const aiResponse = {
         id: (Date.now() + 1).toString(),
-        content: "Hello there! I am scriGPTure, your Bible study assistant. How can I help you today?",
+        content: "I am scriGPTure, your Bible study assistant. How can I help you today?",
         isUser: false,
-        timestamp: new Date(),
+        timestamp: new Date().toISOString(),
       }
-      setMessages((prev) => [...prev, aiResponse])
+      setMessages(prev => [...prev, aiResponse])
+      setIsLoading(false)
     }, 1000)
   }
 
@@ -57,9 +55,10 @@ export default function ChatScreen() {
               key={message.id}
               content={message.content}
               isUser={message.isUser}
-              timestamp={message.timestamp}
+              timestamp={new Date(message.timestamp)}
             />
           ))}
+          {isLoading && <LoadingMessage />}
         </ScrollView>
 
         <ChatInput onSend={handleSend} />
